@@ -1,0 +1,153 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  :root {
+    --bg: #ffffff;
+    --bg-subtle: #f4f4f5;
+    --border: #e4e4e7;
+    --text: #09090b;
+    --text-muted: #52525b;
+    --accent: #2563eb;
+    --accent-soft: rgba(37, 99, 235, 0.1);
+  }
+
+  .dark {
+    --bg: #09090b;
+    --bg-subtle: #111114;
+    --border: #27272a;
+    --text: #fafafa;
+    --text-muted: #a1a1aa;
+    --accent: #3b82f6;
+    --accent-soft: rgba(59, 130, 246, 0.12);
+  }
+
+  html {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  code, pre, kbd, samp, .font-mono {
+    font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  }
+}
+
+/* Shiki dual-theme support */
+.astro-code,
+.astro-code span {
+  background-color: var(--shiki-light-bg) !important;
+  color: var(--shiki-light) !important;
+}
+
+.dark .astro-code,
+.dark .astro-code span {
+  background-color: #111115 !important;
+  color: var(--shiki-dark) !important;
+}
+
+/* Clean reading prose (Karpathy readability × Codelynx polish) */
+.prose {
+  color: var(--text);
+  line-height: 1.75;
+  font-size: 1.05rem;
+}
+
+.prose > * + * {
+  margin-top: 1.25em;
+}
+
+.prose h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-top: 2.25em;
+  margin-bottom: 0.75em;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--border);
+  scroll-margin-top: 5rem;
+}
+
+.prose h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  margin-top: 1.75em;
+  margin-bottom: 0.5em;
+  scroll-margin-top: 5rem;
+}
+
+.prose p {
+  color: var(--text);
+  opacity: 0.92;
+}
+
+.prose a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  transition: opacity 0.15s ease;
+}
+
+.prose a:hover {
+  opacity: 0.8;
+}
+
+.prose ul, .prose ol {
+  padding-left: 1.5rem;
+}
+
+.prose ul {
+  list-style-type: disc;
+}
+
+.prose ol {
+  list-style-type: decimal;
+}
+
+.prose li + li {
+  margin-top: 0.4em;
+}
+
+.prose blockquote {
+  border-left: 3px solid var(--accent);
+  background-color: var(--bg-subtle);
+  padding: 0.75rem 1.15rem;
+  border-radius: 0 0.5rem 0.5rem 0;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.prose code:not(pre code) {
+  background-color: var(--bg-subtle);
+  border: 1px solid var(--border);
+  padding: 0.15rem 0.4rem;
+  border-radius: 0.35rem;
+  font-size: 0.875em;
+}
+
+.prose pre {
+  position: relative;
+  border: 1px solid var(--border);
+  border-radius: 0.65rem;
+  padding: 1.1rem 1.25rem;
+  overflow-x: auto;
+  font-size: 0.875rem;
+  line-height: 1.65;
+}
+
+.prose hr {
+  border: 0;
+  border-top: 1px solid var(--border);
+  margin: 2.5rem 0;
+}
+
+.prose img {
+  border-radius: 0.65rem;
+  border: 1px solid var(--border);
+  margin: 1.5rem 0;
+}

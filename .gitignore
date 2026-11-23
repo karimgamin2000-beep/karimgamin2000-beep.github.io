@@ -1,0 +1,14 @@
+# Dependencies & build output
+node_modules/
+dist/
+.astro/
+
+# Environment & OS
+.env
+.env.*
+.DS_Store
+Thumbs.db
+
+# BrainIA local project notes (do not publish to public blog repo)
+About.md
+Roadmap.md

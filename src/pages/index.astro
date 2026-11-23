@@ -1,0 +1,147 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PostCard from '../components/PostCard.astro';
+
+const allPosts = (await getCollection('posts', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+
+const allTags = [...new Set(allPosts.flatMap((post) => post.data.tags))].sort();
+---
+
+<BaseLayout
+  title="Karim — AI Engineering & Software Notes"
+  description="Long-form technical notes on AI engineering, autonomous dev workflows, data pipelines, and building software in public."
+>
+  <!-- Karpathy-inspired concise hero with Codelynx polish -->
+  <section class="mb-12">
+    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[var(--border)] bg-[var(--bg-subtle)] text-xs font-mono text-[var(--text-muted)] mb-5">
+      <span class="h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span>
+      <span>Building in public &middot; EN / FR</span>
+    </div>
+
+    <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-[var(--text)]">
+      Karim&rsquo;s Technical Notes
+    </h1>
+
+    <p class="mt-4 text-base sm:text-lg text-[var(--text-muted)] leading-relaxed">
+      Computer Science student at IIT &amp; aspiring AI / Robotics Engineer.
+      I write clear, no-fluff notes on <span class="text-[var(--text)] font-medium">AI engineering</span>,
+      <span class="text-[var(--text)] font-medium">software factories</span>, and
+      <span class="text-[var(--text)] font-medium">practical systems</span>.
+    </p>
+  </section>
+
+  <!-- Filter bar: Language + Tags -->
+  <section class="mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-[var(--border)]">
+    <div class="flex items-center gap-1.5" role="group" aria-label="Filter by language">
+      <button
+        data-lang-btn="all"
+        class="lang-btn px-2.5 py-1 rounded-md text-xs font-mono font-medium bg-[var(--text)] text-[var(--bg)] transition-colors cursor-pointer"
+      >
+        All ({allPosts.length})
+      </button>
+      <button
+        data-lang-btn="en"
+        class="lang-btn px-2.5 py-1 rounded-md text-xs font-mono font-medium border border-[var(--border)] text-[var(--text-muted)] hover:text-[var(--text)] transition-colors cursor-pointer"
+      >
+        EN
+      </button>
+      <button
+        data-lang-btn="fr"
+        class="lang-btn px-2.5 py-1 rounded-md text-xs font-mono font-medium border border-[var(--border)] text-[var(--text-muted)] hover:text-[var(--text)] transition-colors cursor-pointer"
+      >
+        FR
+      </button>
+    </div>
+
+    {
+      allTags.length > 0 && (
+        <div class="flex flex-wrap items-center gap-1.5">
+          <button
+            data-tag-btn="all"
+            class="tag-btn px-2 py-0.5 rounded text-[11px] font-mono bg-blue-500/15 text-blue-500 border border-blue-500/30 cursor-pointer"
+          >
+            #all
+          </button>
+          {allTags.map((tag) => (
+            <button
+              data-tag-btn={tag}
+              class="tag-btn px-2 py-0.5 rounded text-[11px] font-mono border border-[var(--border)] text-[var(--text-muted)] hover:text-[var(--text)] transition-colors cursor-pointer"
+            >
+              #{tag}
+            </button>
+          ))}
+        </div>
+      )
+    }
+  </section>
+
+  <!-- Posts list -->
+  <section class="space-y-4" id="posts-list">
+    {allPosts.map((post) => <PostCard post={post} />)}
+  </section>
+
+  <p id="empty-state" class="hidden py-12 text-center font-mono text-sm text-[var(--text-muted)]">
+    No posts match this filter yet.
+  </p>
+</BaseLayout>
+
+<script is:inline>
+  (function () {
+    let activeLang = 'all';
+    let activeTag = 'all';
+
+    const langBtns = document.querySelectorAll('.lang-btn');
+    const tagBtns = document.querySelectorAll('.tag-btn');
+    const cards = document.querySelectorAll('[data-post-card]');
+    const emptyState = document.getElementById('empty-state');
+
+    function applyFilters() {
+      let visible = 0;
+      cards.forEach((card) => {
+        const cardLang = card.getAttribute('data-lang');
+        const cardTags = (card.getAttribute('data-tags') || '').split(',').filter(Boolean);
+        const langMatch = activeLang === 'all' || cardLang === activeLang;
+        const tagMatch = activeTag === 'all' || cardTags.includes(activeTag);
+        const show = langMatch && tagMatch;
+        card.classList.toggle('hidden', !show);
+        if (show) visible++;
+      });
+      if (emptyState) {
+        emptyState.classList.toggle('hidden', visible > 0);
+      }
+    }
+
+    langBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        activeLang = btn.getAttribute('data-lang-btn') || 'all';
+        langBtns.forEach((b) => {
+          const isCurrent = b === btn;
+          b.classList.toggle('bg-[var(--text)]', isCurrent);
+          b.classList.toggle('text-[var(--bg)]', isCurrent);
+          b.classList.toggle('border', !isCurrent);
+          b.classList.toggle('border-[var(--border)]', !isCurrent);
+          b.classList.toggle('text-[var(--text-muted)]', !isCurrent);
+        });
+        applyFilters();
+      });
+    });
+
+    tagBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        activeTag = btn.getAttribute('data-tag-btn') || 'all';
+        tagBtns.forEach((b) => {
+          const isCurrent = b === btn;
+          b.classList.toggle('bg-blue-500/15', isCurrent);
+          b.classList.toggle('text-blue-500', isCurrent);
+          b.classList.toggle('border-blue-500/30', isCurrent);
+          b.classList.toggle('border-[var(--border)]', !isCurrent);
+          b.classList.toggle('text-[var(--text-muted)]', !isCurrent);
+        });
+        applyFilters();
+      });
+    });
+  })();
+</script>

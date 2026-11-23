@@ -1,0 +1,33 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="border-t border-[var(--border)] mt-16">
+  <div class="max-w-3xl mx-auto px-5 sm:px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[var(--text-muted)]">
+    <p class="font-mono">
+      &copy; {year} Karim &middot; Built with Astro &amp; Tailwind
+    </p>
+    <div class="flex items-center gap-4 font-mono">
+      <a
+        href="https://github.com/karimgamin2000-beep"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="hover:text-[var(--text)] transition-colors"
+      >
+        GitHub
+      </a>
+      <a
+        href="/rss.xml"
+        class="hover:text-[var(--text)] transition-colors"
+      >
+        RSS
+      </a>
+      <a
+        href="/about"
+        class="hover:text-[var(--text)] transition-colors"
+      >
+        About
+      </a>
+    </div>
+  </div>
+</footer>

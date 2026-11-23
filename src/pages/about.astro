@@ -8,7 +8,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 >
   <section class="mb-12">
     <div class="flex items-center gap-4 mb-6">
-      <div class="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-[var(--border)] bg-[var(--bg-elevated)] font-serif-editorial italic text-2xl text-[var(--text)] shadow-sm">
+      <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-[var(--border)] bg-[var(--bg-elevated)] font-serif-editorial italic text-xl text-[var(--text)]">
         KAK
       </div>
       <div>
@@ -17,79 +17,31 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </h1>
         <p
           class="text-sm text-[var(--text-muted)] mt-0.5"
-          data-i18n-fr="Étudiant en Informatique (IIT, Côte d'Ivoire) · Futur Ingénieur IA, Data & Robotique"
-          data-i18n-en="Computer Science Student (IIT, Côte d'Ivoire) · Aspiring AI, Data & Robotics Engineer"
+          data-i18n-fr="Étudiant en Informatique (IIT, Côte d'Ivoire) · IA, Data & Robotique"
+          data-i18n-en="CS Student (IIT, Côte d'Ivoire) · AI, Data & Robotics"
         >
-          Étudiant en Informatique (IIT, Côte d&rsquo;Ivoire) &middot; Futur Ingénieur IA, Data &amp; Robotique
+          CS Student (IIT, Côte d&rsquo;Ivoire) &middot; AI, Data &amp; Robotics
         </p>
       </div>
     </div>
 
-    <div class="space-y-4 text-sm sm:text-base text-[var(--text-muted)] leading-relaxed">
-      <p
-        data-i18n-fr="Je construis des systèmes d'automatisation IA, des pipelines de données et des outils développeur modernes. Ce blog est mon carnet d'ingénierie public : des retours concrets, des architectures testées et zéro blabla."
-        data-i18n-en="I build AI automation systems, data pipelines, and modern developer tools. This blog is my public engineering notebook: concrete field notes, tested architectures, and zero fluff."
-      >
-        Je construis des systèmes d&rsquo;automatisation IA, des pipelines de données et des outils développeur modernes. Ce blog est mon carnet d&rsquo;ingénierie public : des retours concrets, des architectures testées et zéro blabla.
-      </p>
-    </div>
-  </section>
-
-  <!-- Focus Areas -->
-  <section class="mb-12 pb-10 border-b border-[var(--border)]/70">
-    <h2
-      class="font-pixel text-xl sm:text-2xl tracking-tight text-[var(--text)] mb-4"
-      data-i18n-fr="Sujets explorés"
-      data-i18n-en="Focus areas"
+    <p
+      class="text-sm sm:text-base text-[var(--text-muted)] leading-relaxed max-w-xl"
+      data-i18n-fr="Je construis des systèmes d'automatisation IA et des outils développeur modernes. Ce blog rassemble mes notes techniques sur l'intelligence artificielle et le développement — sans blabla."
+      data-i18n-en="I build AI automation systems and modern developer tools. This blog is my notebook on artificial intelligence and software engineering — zero fluff."
     >
-      Sujets explorés
-    </h2>
-
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-      <div class="rounded-xl border border-[var(--border)] bg-[var(--bg-elevated)] p-4">
-        <p
-          class="font-display text-sm font-semibold text-[var(--text)]"
-          data-i18n-fr="Intelligence artificielle"
-          data-i18n-en="Artificial Intelligence"
-        >
-          Intelligence artificielle
-        </p>
-        <p
-          class="text-xs text-[var(--text-muted)] mt-1 leading-relaxed"
-          data-i18n-fr="Agents autonomes, usines logicielles IA, évaluation de modèles et workflows pratiques."
-          data-i18n-en="Autonomous agents, AI software factories, model evaluations, and practical workflows."
-        >
-          Agents autonomes, usines logicielles IA, évaluation de modèles et workflows pratiques.
-        </p>
-      </div>
-
-      <div class="rounded-xl border border-[var(--border)] bg-[var(--bg-elevated)] p-4">
-        <p
-          class="font-display text-sm font-semibold text-[var(--text)]"
-          data-i18n-fr="Outils de développement"
-          data-i18n-en="Developer Tools"
-        >
-          Outils de développement
-        </p>
-        <p
-          class="text-xs text-[var(--text-muted)] mt-1 leading-relaxed"
-          data-i18n-fr="Python, TypeScript, CLI sur-mesure, pipelines de données et productivité d'ingénieur."
-          data-i18n-en="Python, TypeScript, custom CLIs, data pipelines, and engineering productivity."
-        >
-          Python, TypeScript, CLI sur-mesure, pipelines de données et productivité d&rsquo;ingénieur.
-        </p>
-      </div>
-    </div>
+      I build AI automation systems and modern developer tools. This blog is my notebook on artificial intelligence and software engineering &mdash; zero fluff.
+    </p>
   </section>
 
-  <!-- Contact & Socials -->
+  <!-- Minimal Contact & Socials -->
   <section>
     <h2
       class="font-pixel text-xl sm:text-2xl tracking-tight text-[var(--text)] mb-4"
-      data-i18n-fr="Contact & Réseaux"
-      data-i18n-en="Contact & Socials"
+      data-i18n-fr="Contact"
+      data-i18n-en="Contact"
     >
-      Contact &amp; Réseaux
+      Contact
     </h2>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -97,70 +49,58 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         href="https://github.com/karimgamin2000-beep"
         target="_blank"
         rel="noopener noreferrer"
-        class="group flex items-center justify-between rounded-xl border border-[var(--border)] bg-[var(--bg-elevated)] p-4 hover:border-[var(--border-strong)] hover:bg-[var(--bg-subtle)]/60 transition-colors"
+        class="group flex items-center justify-between rounded-xl border border-[var(--border)] bg-[var(--bg-elevated)] px-4 py-3.5 hover:border-[var(--border-strong)] hover:bg-[var(--bg-subtle)]/60 transition-colors"
       >
         <div class="flex items-center gap-3 min-w-0">
-          <svg class="w-5 h-5 shrink-0 text-[var(--text)]" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <svg class="w-4 h-4 shrink-0 text-[var(--text)]" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
             <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
           </svg>
-          <div class="min-w-0">
-            <p class="text-sm font-medium text-[var(--text)]">GitHub</p>
-            <p class="text-xs font-mono text-[var(--text-muted)] truncate">@karimgamin2000-beep</p>
-          </div>
+          <span class="text-sm font-medium text-[var(--text)]">GitHub</span>
         </div>
-        <span class="text-[var(--text-muted)] group-hover:translate-x-0.5 transition-transform">&rarr;</span>
+        <span class="text-xs font-mono text-[var(--text-muted)] group-hover:text-[var(--text)] transition-colors">@karimgamin2000-beep &rarr;</span>
       </a>
 
       <a
         href="https://www.linkedin.com/in/abdoul-karim-konate-15635b3b0"
         target="_blank"
         rel="noopener noreferrer"
-        class="group flex items-center justify-between rounded-xl border border-[var(--border)] bg-[var(--bg-elevated)] p-4 hover:border-[var(--border-strong)] hover:bg-[var(--bg-subtle)]/60 transition-colors"
+        class="group flex items-center justify-between rounded-xl border border-[var(--border)] bg-[var(--bg-elevated)] px-4 py-3.5 hover:border-[var(--border-strong)] hover:bg-[var(--bg-subtle)]/60 transition-colors"
       >
         <div class="flex items-center gap-3 min-w-0">
-          <svg class="w-5 h-5 shrink-0 text-[var(--text)]" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <svg class="w-4 h-4 shrink-0 text-[var(--text)]" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
             <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" />
           </svg>
-          <div class="min-w-0">
-            <p class="text-sm font-medium text-[var(--text)]">LinkedIn</p>
-            <p class="text-xs font-mono text-[var(--text-muted)] truncate">Abdoul Karim Konaté</p>
-          </div>
+          <span class="text-sm font-medium text-[var(--text)]">LinkedIn</span>
         </div>
-        <span class="text-[var(--text-muted)] group-hover:translate-x-0.5 transition-transform">&rarr;</span>
+        <span class="text-xs font-mono text-[var(--text-muted)] group-hover:text-[var(--text)] transition-colors">Profile &rarr;</span>
       </a>
 
       <a
         href="https://x.com/Karimpromax1"
         target="_blank"
         rel="noopener noreferrer"
-        class="group flex items-center justify-between rounded-xl border border-[var(--border)] bg-[var(--bg-elevated)] p-4 hover:border-[var(--border-strong)] hover:bg-[var(--bg-subtle)]/60 transition-colors"
+        class="group flex items-center justify-between rounded-xl border border-[var(--border)] bg-[var(--bg-elevated)] px-4 py-3.5 hover:border-[var(--border-strong)] hover:bg-[var(--bg-subtle)]/60 transition-colors"
       >
         <div class="flex items-center gap-3 min-w-0">
-          <svg class="w-5 h-5 shrink-0 text-[var(--text)]" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <svg class="w-4 h-4 shrink-0 text-[var(--text)]" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
             <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
           </svg>
-          <div class="min-w-0">
-            <p class="text-sm font-medium text-[var(--text)]">X (Twitter)</p>
-            <p class="text-xs font-mono text-[var(--text-muted)] truncate">@Karimpromax1</p>
-          </div>
+          <span class="text-sm font-medium text-[var(--text)]">X</span>
         </div>
-        <span class="text-[var(--text-muted)] group-hover:translate-x-0.5 transition-transform">&rarr;</span>
+        <span class="text-xs font-mono text-[var(--text-muted)] group-hover:text-[var(--text)] transition-colors">@Karimpromax1 &rarr;</span>
       </a>
 
       <a
         href="mailto:karimgamin2000@gmail.com"
-        class="group flex items-center justify-between rounded-xl border border-[var(--border)] bg-[var(--bg-elevated)] p-4 hover:border-[var(--border-strong)] hover:bg-[var(--bg-subtle)]/60 transition-colors"
+        class="group flex items-center justify-between rounded-xl border border-[var(--border)] bg-[var(--bg-elevated)] px-4 py-3.5 hover:border-[var(--border-strong)] hover:bg-[var(--bg-subtle)]/60 transition-colors"
       >
         <div class="flex items-center gap-3 min-w-0">
-          <svg class="w-5 h-5 shrink-0 text-[var(--text)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+          <svg class="w-4 h-4 shrink-0 text-[var(--text)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
           </svg>
-          <div class="min-w-0">
-            <p class="text-sm font-medium text-[var(--text)]">Email</p>
-            <p class="text-xs font-mono text-[var(--text-muted)] truncate">karimgamin2000@gmail.com</p>
-          </div>
+          <span class="text-sm font-medium text-[var(--text)]">Email</span>
         </div>
-        <span class="text-[var(--text-muted)] group-hover:translate-x-0.5 transition-transform">&rarr;</span>
+        <span class="text-xs font-mono text-[var(--text-muted)] group-hover:text-[var(--text)] transition-colors">Send &rarr;</span>
       </a>
     </div>
   </section>

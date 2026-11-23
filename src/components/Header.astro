@@ -31,7 +31,7 @@ const popularArticles = allPosts.filter((p) => p.data.popular || p.data.featured
         aria-controls="explorer-popover"
         class="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-md text-sm text-[var(--text-muted)] hover:text-[var(--text)] hover:bg-[var(--bg-subtle)] transition-colors cursor-pointer"
       >
-        <span data-i18n-fr="Explorer" data-i18n-en="Explore">Explorer</span>
+        <span data-i18n-fr="Explorer" data-i18n-en="Explore">Explore</span>
         <svg
           id="explorer-chevron"
           class="w-3.5 h-3.5 transition-transform duration-150"
@@ -59,6 +59,8 @@ const popularArticles = allPosts.filter((p) => p.data.popular || p.data.featured
 
       <a
         href="/about/"
+        data-i18n-fr="À propos"
+        data-i18n-en="About"
         class:list={[
           'px-2.5 py-1.5 rounded-md text-sm transition-colors',
           pathname.startsWith('/about')
@@ -83,7 +85,7 @@ const popularArticles = allPosts.filter((p) => p.data.popular || p.data.featured
             <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9 9 0 100-18 9 9 0 000 18z" />
             <path stroke-linecap="round" stroke-linejoin="round" d="M3.6 9h16.8M3.6 15h16.8M12 3a14.5 14.5 0 010 18M12 3a14.5 14.5 0 000 18" />
           </svg>
-          <span data-lang-badge>FR</span>
+          <span data-lang-badge>EN</span>
         </button>
 
         <div
@@ -95,10 +97,10 @@ const popularArticles = allPosts.filter((p) => p.data.popular || p.data.featured
             type="button"
             role="menuitemradio"
             aria-checked="true"
-            data-lang-option="fr"
+            data-lang-option="en"
             class="w-full flex items-center justify-between px-2.5 py-2 rounded-lg text-xs text-[var(--text)] hover:bg-[var(--bg-subtle)] transition-colors cursor-pointer"
           >
-            <span>Français <span class="font-mono text-[var(--text-muted)] ml-1">FR</span></span>
+            <span>English <span class="font-mono text-[var(--text-muted)] ml-1">EN</span></span>
             <svg data-lang-check class="w-3.5 h-3.5 text-[var(--text)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
             </svg>
@@ -107,10 +109,10 @@ const popularArticles = allPosts.filter((p) => p.data.popular || p.data.featured
             type="button"
             role="menuitemradio"
             aria-checked="false"
-            data-lang-option="en"
+            data-lang-option="fr"
             class="w-full flex items-center justify-between px-2.5 py-2 rounded-lg text-xs text-[var(--text)] hover:bg-[var(--bg-subtle)] transition-colors cursor-pointer"
           >
-            <span>English <span class="font-mono text-[var(--text-muted)] ml-1">EN</span></span>
+            <span>Français <span class="font-mono text-[var(--text-muted)] ml-1">FR</span></span>
             <svg data-lang-check class="w-3.5 h-3.5 text-[var(--text)] opacity-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
             </svg>

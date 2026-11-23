@@ -41,11 +41,11 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
 
-    <!-- Fonts: Inter & JetBrains Mono -->
+    <!-- Fonts: Space Grotesk, Instrument Serif, Inter & JetBrains Mono -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap"
       rel="stylesheet"
     />
 
@@ -59,9 +59,18 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
       })();
     </script>
   </head>
-  <body class="min-h-screen flex flex-col bg-[var(--bg)] text-[var(--text)] selection:bg-blue-500/20 selection:text-blue-400">
+  <body class="relative min-h-screen flex flex-col bg-[var(--bg)] text-[var(--text)] overflow-x-clip">
+    <!-- Subtle tactile noise overlay -->
+    <div aria-hidden="true" class="bg-noise pointer-events-none fixed inset-0 z-50"></div>
+
+    <!-- Ambient top radial light -->
+    <div
+      aria-hidden="true"
+      class="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 w-[48rem] h-[20rem] rounded-full bg-emerald-500/[0.06] blur-3xl -z-10"
+    ></div>
+
     <Header />
-    <main class="flex-1 w-full max-w-3xl mx-auto px-5 sm:px-6 py-10 sm:py-14">
+    <main class="flex-1 w-full max-w-2xl mx-auto px-5 sm:px-6 py-10 sm:py-16">
       <slot />
     </main>
     <Footer />

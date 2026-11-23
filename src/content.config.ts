@@ -9,9 +9,11 @@ const posts = defineCollection({
     pubDate: z.coerce.date(),
     updatedDate: z.coerce.date().optional(),
     lang: z.enum(['en', 'fr']).default('en'),
+    category: z.enum(['ai', 'tools']).default('ai'),
     tags: z.array(z.string()).default([]),
     draft: z.boolean().default(false),
     featured: z.boolean().default(false),
+    popular: z.boolean().default(false),
   }),
 });
 

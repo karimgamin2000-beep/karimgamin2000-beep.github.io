@@ -2,12 +2,27 @@
 const year = new Date().getFullYear();
 ---
 
-<footer class="border-t border-[var(--border)] mt-20">
+<footer class="border-t border-[var(--border)]/70 mt-20">
   <div class="max-w-2xl mx-auto px-5 sm:px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[var(--text-muted)]">
-    <p class="font-mono tabular-nums">
-      &copy; {year} KARIM.DEV &middot; Static Astro + Tailwind
-    </p>
-    <div class="flex items-center gap-5 font-mono">
+    <div class="flex items-center gap-3">
+      <span class="font-serif-editorial italic text-lg text-[var(--text)] leading-none">KAK</span>
+      <span aria-hidden="true">&middot;</span>
+      <span class="tabular-nums">&copy; {year} Abdoul Karim Konaté</span>
+    </div>
+
+    <div class="flex items-center gap-5">
+      <a
+        href="/posts/"
+        class="hover:text-[var(--text)] transition-colors"
+      >
+        Posts
+      </a>
+      <a
+        href="/about/"
+        class="hover:text-[var(--text)] transition-colors"
+      >
+        About
+      </a>
       <a
         href="https://github.com/karimgamin2000-beep"
         target="_blank"
@@ -17,16 +32,12 @@ const year = new Date().getFullYear();
         GitHub
       </a>
       <a
-        href="/rss.xml"
+        href="https://x.com/Karimpromax1"
+        target="_blank"
+        rel="noopener noreferrer"
         class="hover:text-[var(--text)] transition-colors"
       >
-        RSS
-      </a>
-      <a
-        href="/about"
-        class="hover:text-[var(--text)] transition-colors"
-      >
-        About
+        X
       </a>
     </div>
   </div>

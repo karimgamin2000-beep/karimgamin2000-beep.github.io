@@ -1,0 +1,245 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PostCard from '../../components/PostCard.astro';
+
+const allPosts = (await getCollection('posts', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+
+const allTags = [...new Set(allPosts.flatMap((post) => post.data.tags))].sort();
+---
+
+<BaseLayout
+  title="All articles — KAK"
+  description="Tous les articles sur l'intelligence artificielle et les outils de développement."
+>
+  <section class="mb-8">
+    <h1 class="font-pixel text-3xl sm:text-4xl tracking-tight text-[var(--text)] mb-4">
+      All articles
+    </h1>
+
+    <!-- Language filter pills (EN / FR like Codelynx GB / FR) -->
+    <div class="flex items-center gap-2 mb-6" role="group" aria-label="Filter posts by language">
+      <button
+        type="button"
+        data-post-lang="all"
+        class="post-lang-btn px-2.5 py-1 rounded-md text-xs font-mono font-medium bg-[var(--text)] text-[var(--bg)] border border-[var(--text)] transition-colors cursor-pointer"
+      >
+        ALL
+      </button>
+      <button
+        type="button"
+        data-post-lang="en"
+        class="post-lang-btn px-2.5 py-1 rounded-md text-xs font-mono font-medium border border-[var(--border)] text-[var(--text-muted)] hover:text-[var(--text)] transition-colors cursor-pointer"
+      >
+        EN
+      </button>
+      <button
+        type="button"
+        data-post-lang="fr"
+        class="post-lang-btn px-2.5 py-1 rounded-md text-xs font-mono font-medium border border-[var(--border)] text-[var(--text-muted)] hover:text-[var(--text)] transition-colors cursor-pointer"
+      >
+        FR
+      </button>
+    </div>
+
+    <!-- Search + Sort row -->
+    <div class="flex flex-col sm:flex-row gap-3 mb-4">
+      <input
+        id="posts-search"
+        type="search"
+        placeholder="Rechercher..."
+        data-i18n-placeholder-fr="Rechercher..."
+        data-i18n-placeholder-en="Search..."
+        aria-label="Search articles"
+        class="flex-1 rounded-lg border border-[var(--border)] bg-[var(--bg-elevated)] px-3.5 py-2 text-sm text-[var(--text)] placeholder:text-[var(--text-muted)] focus:border-[var(--border-strong)] focus:outline-none transition-colors"
+      />
+
+      <select
+        id="posts-sort"
+        aria-label="Sort articles"
+        class="rounded-lg border border-[var(--border)] bg-[var(--bg-elevated)] px-3.5 py-2 text-sm text-[var(--text)] focus:border-[var(--border-strong)] focus:outline-none cursor-pointer"
+      >
+        <option value="recent" data-i18n-fr="Plus récents" data-i18n-en="Most recent">Plus récents</option>
+        <option value="oldest" data-i18n-fr="Plus anciens" data-i18n-en="Oldest first">Plus anciens</option>
+      </select>
+    </div>
+
+    <!-- Category & tag pills -->
+    <div class="flex flex-wrap items-center gap-1.5">
+      <button
+        type="button"
+        data-cat-btn="all"
+        class="cat-btn px-3 py-1 rounded-full text-xs font-medium bg-[var(--text)] text-[var(--bg)] border border-[var(--text)] transition-colors cursor-pointer"
+      >
+        All
+      </button>
+      <button
+        type="button"
+        data-cat-btn="ai"
+        class="cat-btn px-3 py-1 rounded-full text-xs font-medium border border-[var(--border)] text-[var(--text-muted)] hover:text-[var(--text)] transition-colors cursor-pointer"
+        data-i18n-fr="Intelligence artificielle"
+        data-i18n-en="AI"
+      >
+        Intelligence artificielle
+      </button>
+      <button
+        type="button"
+        data-cat-btn="tools"
+        class="cat-btn px-3 py-1 rounded-full text-xs font-medium border border-[var(--border)] text-[var(--text-muted)] hover:text-[var(--text)] transition-colors cursor-pointer"
+        data-i18n-fr="Outils de développement"
+        data-i18n-en="Dev Tools"
+      >
+        Outils de développement
+      </button>
+      {
+        allTags.map((tag) => (
+          <button
+            type="button"
+            data-tag-btn={tag}
+            class="tag-btn px-3 py-1 rounded-full text-xs font-medium border border-[var(--border)] text-[var(--text-muted)] hover:text-[var(--text)] transition-colors cursor-pointer"
+          >
+            {tag}
+          </button>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- Posts list or empty state -->
+  {
+    allPosts.length > 0 ? (
+      <section class="divide-y divide-[var(--border)]/60" id="all-posts-list">
+        {allPosts.map((post) => <PostCard post={post} />)}
+      </section>
+    ) : (
+      <div class="rounded-xl border border-dashed border-[var(--border)] bg-[var(--bg-elevated)]/40 px-6 py-14 text-center">
+        <p
+          class="font-display text-base font-medium text-[var(--text)] mb-1.5"
+          data-i18n-fr="Aucun article pour le moment"
+          data-i18n-en="No articles yet"
+        >
+          Aucun article pour le moment
+        </p>
+        <p
+          class="text-sm text-[var(--text-muted)]"
+          data-i18n-fr="Les articles sur l'intelligence artificielle et les outils de développement seront publiés ici."
+          data-i18n-en="Articles on artificial intelligence and developer tools will be published here."
+        >
+          Les articles sur l&rsquo;intelligence artificielle et les outils de développement seront publiés ici.
+        </p>
+      </div>
+    )
+  }
+
+  <p
+    id="posts-empty-filter"
+    class="hidden py-12 text-center text-sm text-[var(--text-muted)]"
+    data-i18n-fr="Aucun article ne correspond à cette recherche."
+    data-i18n-en="No articles match your current filter."
+  >
+    Aucun article ne correspond à cette recherche.
+  </p>
+</BaseLayout>
+
+<script is:inline>
+  (function () {
+    const params = new URLSearchParams(window.location.search);
+    let activeLang = 'all';
+    let activeCategory = params.get('category') || 'all';
+    let activeTag = 'all';
+    let query = '';
+    let sortOrder = 'recent';
+
+    const listEl = document.getElementById('all-posts-list');
+    const searchInput = document.getElementById('posts-search');
+    const sortSelect = document.getElementById('posts-sort');
+    const langBtns = document.querySelectorAll('.post-lang-btn');
+    const catBtns = document.querySelectorAll('.cat-btn');
+    const tagBtns = document.querySelectorAll('.tag-btn');
+    const emptyFilter = document.getElementById('posts-empty-filter');
+
+    function setBtnActive(btn, isCurrent) {
+      btn.classList.toggle('bg-[var(--text)]', isCurrent);
+      btn.classList.toggle('text-[var(--bg)]', isCurrent);
+      btn.classList.toggle('border-[var(--text)]', isCurrent);
+      btn.classList.toggle('border-[var(--border)]', !isCurrent);
+      btn.classList.toggle('text-[var(--text-muted)]', !isCurrent);
+    }
+
+    function applyAll() {
+      if (!listEl) return;
+      const cards = Array.from(listEl.querySelectorAll('[data-post-card]'));
+
+      cards.sort((a, b) => {
+        const da = Number(a.getAttribute('data-date') || 0);
+        const db = Number(b.getAttribute('data-date') || 0);
+        return sortOrder === 'recent' ? db - da : da - db;
+      });
+      cards.forEach((c) => listEl.appendChild(c));
+
+      let visible = 0;
+      cards.forEach((card) => {
+        const cLang = card.getAttribute('data-lang');
+        const cCat = card.getAttribute('data-category');
+        const cTags = (card.getAttribute('data-tags') || '').split(',').filter(Boolean);
+        const blob = card.getAttribute('data-search') || '';
+
+        const matchLang = activeLang === 'all' || cLang === activeLang;
+        const matchCat = activeCategory === 'all' || cCat === activeCategory;
+        const matchTag = activeTag === 'all' || cTags.includes(activeTag);
+        const matchQuery = !query || blob.includes(query);
+
+        const show = matchLang && matchCat && matchTag && matchQuery;
+        card.classList.toggle('hidden', !show);
+        if (show) visible++;
+      });
+
+      emptyFilter?.classList.toggle('hidden', visible > 0);
+    }
+
+    // Sync initial URL category pill highlight
+    catBtns.forEach((b) => {
+      setBtnActive(b, (b.getAttribute('data-cat-btn') || 'all') === activeCategory);
+    });
+    applyAll();
+
+    langBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        activeLang = btn.getAttribute('data-post-lang') || 'all';
+        langBtns.forEach((b) => setBtnActive(b, b === btn));
+        applyAll();
+      });
+    });
+
+    catBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        activeCategory = btn.getAttribute('data-cat-btn') || 'all';
+        activeTag = 'all';
+        catBtns.forEach((b) => setBtnActive(b, b === btn));
+        tagBtns.forEach((b) => setBtnActive(b, false));
+        applyAll();
+      });
+    });
+
+    tagBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const clicked = btn.getAttribute('data-tag-btn') || 'all';
+        activeTag = activeTag === clicked ? 'all' : clicked;
+        tagBtns.forEach((b) => setBtnActive(b, b.getAttribute('data-tag-btn') === activeTag));
+        applyAll();
+      });
+    });
+
+    searchInput?.addEventListener('input', (e) => {
+      query = e.target.value.trim().toLowerCase();
+      applyAll();
+    });
+
+    sortSelect?.addEventListener('change', (e) => {
+      sortOrder = e.target.value;
+      applyAll();
+    });
+  })();
+</script>

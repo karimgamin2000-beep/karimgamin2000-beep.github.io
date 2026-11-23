@@ -11,7 +11,7 @@ interface Props {
 
 const {
   title,
-  description = 'Technical notes, AI engineering experiments, and software architecture by Karim.',
+  description = 'KAK — Notes techniques, intelligence artificielle et outils de développement.',
   ogType = 'website',
 } = Astro.props;
 
@@ -19,13 +19,12 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <!doctype html>
-<html lang="en" class="dark">
+<html lang="fr" class="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="canonical" href={canonicalURL} />
-    <link rel="alternate" type="application/rss+xml" title="Karim's Blog RSS" href="/rss.xml" />
 
     <title>{title}</title>
     <meta name="description" content={description} />
@@ -41,21 +40,22 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
 
-    <!-- Fonts: Space Grotesk, Instrument Serif, Inter & JetBrains Mono -->
+    <!-- Fonts: Instrument Serif (KAK logo), Pixelify Sans (Codelynx section headings), Space Grotesk, Inter, JetBrains Mono -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Pixelify+Sans:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
 
-    <!-- Prevent dark/light flash -->
+    <!-- Prevent dark/light & language flash -->
     <script is:inline>
       (function () {
-        const stored = localStorage.getItem('theme');
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        const theme = stored || (prefersDark ? 'dark' : 'dark');
-        document.documentElement.classList.toggle('dark', theme === 'dark');
+        const storedTheme = localStorage.getItem('theme') || 'dark';
+        document.documentElement.classList.toggle('dark', storedTheme === 'dark');
+        const storedLang = localStorage.getItem('kak_lang') || 'fr';
+        document.documentElement.setAttribute('data-lang', storedLang);
+        document.documentElement.lang = storedLang;
       })();
     </script>
   </head>
@@ -63,16 +63,47 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <!-- Subtle tactile noise overlay -->
     <div aria-hidden="true" class="bg-noise pointer-events-none fixed inset-0 z-50"></div>
 
-    <!-- Ambient top radial light -->
-    <div
-      aria-hidden="true"
-      class="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 w-[48rem] h-[20rem] rounded-full bg-emerald-500/[0.06] blur-3xl -z-10"
-    ></div>
-
     <Header />
-    <main class="flex-1 w-full max-w-2xl mx-auto px-5 sm:px-6 py-10 sm:py-16">
+    <main class="flex-1 w-full max-w-2xl mx-auto px-5 sm:px-6 py-10 sm:py-14">
       <slot />
     </main>
     <Footer />
+
+    <!-- Global bilingual UI sync -->
+    <script is:inline>
+      (function () {
+        window.applySiteLang = function (lang) {
+          localStorage.setItem('kak_lang', lang);
+          document.documentElement.setAttribute('data-lang', lang);
+          document.documentElement.lang = lang;
+
+          document.querySelectorAll('[data-i18n-fr][data-i18n-en]').forEach((el) => {
+            const text = lang === 'en' ? el.getAttribute('data-i18n-en') : el.getAttribute('data-i18n-fr');
+            if (text !== null) el.textContent = text;
+          });
+
+          document.querySelectorAll('[data-i18n-placeholder-fr][data-i18n-placeholder-en]').forEach((el) => {
+            const ph = lang === 'en' ? el.getAttribute('data-i18n-placeholder-en') : el.getAttribute('data-i18n-placeholder-fr');
+            if (ph !== null) el.setAttribute('placeholder', ph);
+          });
+
+          document.querySelectorAll('[data-lang-badge]').forEach((el) => {
+            el.textContent = lang.toUpperCase();
+          });
+
+          document.querySelectorAll('[data-lang-option]').forEach((el) => {
+            const isActive = el.getAttribute('data-lang-option') === lang;
+            el.setAttribute('aria-checked', isActive ? 'true' : 'false');
+            const check = el.querySelector('[data-lang-check]');
+            if (check) check.classList.toggle('opacity-0', !isActive);
+          });
+
+          window.dispatchEvent(new CustomEvent('kak:langchange', { detail: { lang } }));
+        };
+
+        const initial = localStorage.getItem('kak_lang') || 'fr';
+        window.applySiteLang(initial);
+      })();
+    </script>
   </body>
 </html>

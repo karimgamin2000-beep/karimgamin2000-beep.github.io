@@ -1,0 +1,261 @@
+<!DOCTYPE html><html lang="en" class="dark"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="icon" type="image/svg+xml" href="/favicon.svg?v=3"><link rel="canonical" href="https://karimgamin2000-beep.github.io/posts/"><title>All articles — KAK</title><meta name="description" content="Tous les articles sur l'intelligence artificielle et les outils de développement."><!-- Open Graph --><meta property="og:type" content="website"><meta property="og:url" content="https://karimgamin2000-beep.github.io/posts/"><meta property="og:title" content="All articles — KAK"><meta property="og:description" content="Tous les articles sur l'intelligence artificielle et les outils de développement."><meta property="og:image" content="https://karimgamin2000-beep.github.io/og/default.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><!-- Twitter --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="All articles — KAK"><meta name="twitter:description" content="Tous les articles sur l'intelligence artificielle et les outils de développement."><meta name="twitter:image" content="https://karimgamin2000-beep.github.io/og/default.png"><!-- Privacy-first Web Analytics (GoatCounter, zero cookies, skipped on admin/noindex) --><script data-goatcounter="https://kak-blog.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script><!-- Fonts: Instrument Serif (KAK logo), Pixelify Sans (Codelynx section headings), Space Grotesk, Inter, JetBrains Mono --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Pixelify+Sans:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"><!-- Prevent dark/light & language flash --><script>
+      (function () {
+        const storedTheme = localStorage.getItem('theme') || 'dark';
+        document.documentElement.classList.toggle('dark', storedTheme === 'dark');
+        const storedLang = localStorage.getItem('kak_lang') || 'en';
+        document.documentElement.setAttribute('data-lang', storedLang);
+        document.documentElement.lang = storedLang;
+      })();
+    </script><link rel="stylesheet" href="/_astro/about.fNKQ5nPJ.css"></head> <body class="relative min-h-screen flex flex-col bg-[var(--bg)] text-[var(--text)] overflow-x-clip"> <!-- Subtle tactile noise overlay --> <div aria-hidden="true" class="bg-noise pointer-events-none fixed inset-0 z-50"></div> <header class="sticky top-0 z-40 w-full bg-[var(--bg)]/85 backdrop-blur-md border-b border-[var(--border)]/50"> <div class="relative max-w-2xl mx-auto px-5 sm:px-6 h-14 flex items-center justify-between gap-4"> <!-- KAK Serif Italic Logo --> <a href="/" aria-label="KAK Home" class="font-serif-editorial italic text-[26px] leading-none tracking-wide text-[var(--text)] hover:opacity-80 transition-opacity select-none">
+KAK
+</a> <!-- Navigation + Popovers --> <nav aria-label="Main navigation" class="flex items-center gap-1 sm:gap-2"> <!-- Explorer Popover Trigger --> <button id="explorer-trigger" type="button" aria-expanded="false" aria-controls="explorer-popover" class="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-md text-sm text-[var(--text-muted)] hover:text-[var(--text)] hover:bg-[var(--bg-subtle)] transition-colors cursor-pointer"> <span data-i18n-fr="Explorer" data-i18n-en="Explore">Explore</span> <svg id="explorer-chevron" class="w-3.5 h-3.5 transition-transform duration-150" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"> <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path> </svg> </button> <a href="/posts/" class="px-2.5 py-1.5 rounded-md text-sm transition-colors text-[var(--text)] font-medium bg-[var(--bg-subtle)]">
+Posts
+</a> <a href="/about/" data-i18n-fr="À propos" data-i18n-en="About" class="px-2.5 py-1.5 rounded-md text-sm transition-colors text-[var(--text-muted)] hover:text-[var(--text)] hover:bg-[var(--bg-subtle)]/70">
+About
+</a> <!-- Bilingual Language Popover (right next to theme toggle) --> <div class="relative ml-1"> <button id="lang-trigger" type="button" aria-expanded="false" aria-controls="lang-popover" aria-label="Change language" class="inline-flex items-center gap-1 px-2 py-1.5 rounded-md text-xs font-mono text-[var(--text-muted)] hover:text-[var(--text)] hover:bg-[var(--bg-subtle)] transition-colors cursor-pointer"> <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" aria-hidden="true"> <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9 9 0 100-18 9 9 0 000 18z"></path> <path stroke-linecap="round" stroke-linejoin="round" d="M3.6 9h16.8M3.6 15h16.8M12 3a14.5 14.5 0 010 18M12 3a14.5 14.5 0 000 18"></path> </svg> <span data-lang-badge>EN</span> </button> <div id="lang-popover" role="menu" class="hidden absolute right-0 mt-2 w-40 rounded-xl border border-[var(--border)] bg-[var(--bg-elevated)] p-1.5 shadow-xl shadow-black/40 z-50"> <button type="button" role="menuitemradio" aria-checked="true" data-lang-option="en" class="w-full flex items-center justify-between px-2.5 py-2 rounded-lg text-xs text-[var(--text)] hover:bg-[var(--bg-subtle)] transition-colors cursor-pointer"> <span>English <span class="font-mono text-[var(--text-muted)] ml-1">EN</span></span> <svg data-lang-check class="w-3.5 h-3.5 text-[var(--text)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2"> <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path> </svg> </button> <button type="button" role="menuitemradio" aria-checked="false" data-lang-option="fr" class="w-full flex items-center justify-between px-2.5 py-2 rounded-lg text-xs text-[var(--text)] hover:bg-[var(--bg-subtle)] transition-colors cursor-pointer"> <span>Français <span class="font-mono text-[var(--text-muted)] ml-1">FR</span></span> <svg data-lang-check class="w-3.5 h-3.5 text-[var(--text)] opacity-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2"> <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path> </svg> </button> </div> </div> <!-- Dark / Light Theme Toggle --> <button id="theme-toggle" type="button" aria-label="Toggle color theme" class="p-2 rounded-md text-[var(--text-muted)] hover:text-[var(--text)] hover:bg-[var(--bg-subtle)] transition-colors cursor-pointer"> <svg class="hidden dark:block w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" aria-hidden="true"> <path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path> </svg> <svg class="block dark:hidden w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" aria-hidden="true"> <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path> </svg> </button> </nav> <!-- Explorer Popover Panel (Codelynx-style) --> <div id="explorer-popover" class="hidden absolute left-4 right-4 sm:left-6 sm:right-6 top-[calc(100%+0.5rem)] rounded-2xl border border-[var(--border)] bg-[var(--bg-elevated)] p-5 sm:p-6 shadow-2xl shadow-black/50 z-50"> <p class="text-xs font-medium text-[var(--text-muted)] mb-3.5" data-i18n-fr="Catégories" data-i18n-en="Categories">
+Catégories
+</p> <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pb-5 border-b border-[var(--border)]"> <a href="/posts/?category=ai" class="group flex items-start gap-3 rounded-xl p-2.5 -mx-1 hover:bg-[var(--bg-subtle)] transition-colors"> <span class="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-[var(--border)] bg-[var(--bg)] text-violet-400"> <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" aria-hidden="true"> <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z"></path> </svg> </span> <div class="min-w-0"> <p class="text-sm font-medium text-[var(--text)] group-hover:underline underline-offset-4" data-i18n-fr="Intelligence artificielle" data-i18n-en="Artificial Intelligence">
+Intelligence artificielle
+</p> <p class="text-xs text-[var(--text-muted)] line-clamp-1 mt-0.5" data-i18n-fr="LLMs, agents autonomes, pipelines IA & recherche." data-i18n-en="LLMs, autonomous agents, AI pipelines & research.">
+LLMs, agents autonomes, pipelines IA &amp; recherche.
+</p> </div> </a> <a href="/posts/?category=tools" class="group flex items-start gap-3 rounded-xl p-2.5 -mx-1 hover:bg-[var(--bg-subtle)] transition-colors"> <span class="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-[var(--border)] bg-[var(--bg)] text-sky-400"> <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" aria-hidden="true"> <path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085"></path> </svg> </span> <div class="min-w-0"> <p class="text-sm font-medium text-[var(--text)] group-hover:underline underline-offset-4" data-i18n-fr="Outils de développement" data-i18n-en="Developer Tools">
+Outils de développement
+</p> <p class="text-xs text-[var(--text-muted)] line-clamp-1 mt-0.5" data-i18n-fr="Stack, CLI, éditeurs, Python, TypeScript & workflows." data-i18n-en="Stack, CLI, editors, Python, TypeScript & workflows.">
+Stack, CLI, éditeurs, Python, TypeScript &amp; workflows.
+</p> </div> </a> </div> <!-- Last articles & Popular articles --> <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4"> <div> <p class="text-xs font-medium text-[var(--text-muted)] mb-2.5">
+Last articles
+</p> <ul class="space-y-2"> <li> <a href="/posts/quest-ce-quune-software-factory-ia/" class="group flex items-center gap-2 text-sm text-[var(--text)] hover:text-[var(--text-muted)] transition-colors"> <span class="text-[var(--text-muted)] group-hover:translate-x-0.5 transition-transform">&rarr;</span> <span class="truncate">Qu&#39;est-ce qu&#39;une Software Factory IA ? Architecture, chiffres réels et pourquoi on ne peut pas l&#39;acheter</span> </a> </li><li> <a href="/posts/what-is-an-ai-software-factory/" class="group flex items-center gap-2 text-sm text-[var(--text)] hover:text-[var(--text-muted)] transition-colors"> <span class="text-[var(--text-muted)] group-hover:translate-x-0.5 transition-transform">&rarr;</span> <span class="truncate">What Is an AI Software Factory? Architecture, Real-World Numbers, and Why You Can&#39;t Buy One</span> </a> </li> </ul> </div> <div> <p class="text-xs font-medium text-[var(--text-muted)] mb-2.5">
+Popular articles
+</p> <ul class="space-y-2"> <li> <a href="/posts/quest-ce-quune-software-factory-ia/" class="group flex items-center gap-2 text-sm text-[var(--text)] hover:text-[var(--text-muted)] transition-colors"> <span class="text-[var(--text-muted)] group-hover:translate-x-0.5 transition-transform">&rarr;</span> <span class="truncate">Qu&#39;est-ce qu&#39;une Software Factory IA ? Architecture, chiffres réels et pourquoi on ne peut pas l&#39;acheter</span> </a> </li><li> <a href="/posts/what-is-an-ai-software-factory/" class="group flex items-center gap-2 text-sm text-[var(--text)] hover:text-[var(--text-muted)] transition-colors"> <span class="text-[var(--text-muted)] group-hover:translate-x-0.5 transition-transform">&rarr;</span> <span class="truncate">What Is an AI Software Factory? Architecture, Real-World Numbers, and Why You Can&#39;t Buy One</span> </a> </li> </ul> </div> </div> </div> </div> </header> <script>
+  (function () {
+    const explorerTrigger = document.getElementById('explorer-trigger');
+    const explorerPopover = document.getElementById('explorer-popover');
+    const explorerChevron = document.getElementById('explorer-chevron');
+
+    const langTrigger = document.getElementById('lang-trigger');
+    const langPopover = document.getElementById('lang-popover');
+
+    function closeExplorer() {
+      explorerPopover?.classList.add('hidden');
+      explorerTrigger?.setAttribute('aria-expanded', 'false');
+      explorerChevron?.classList.remove('rotate-180');
+    }
+
+    function closeLang() {
+      langPopover?.classList.add('hidden');
+      langTrigger?.setAttribute('aria-expanded', 'false');
+    }
+
+    explorerTrigger?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = !explorerPopover?.classList.contains('hidden');
+      closeLang();
+      if (isOpen) {
+        closeExplorer();
+      } else {
+        explorerPopover?.classList.remove('hidden');
+        explorerTrigger?.setAttribute('aria-expanded', 'true');
+        explorerChevron?.classList.add('rotate-180');
+      }
+    });
+
+    langTrigger?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = !langPopover?.classList.contains('hidden');
+      closeExplorer();
+      if (isOpen) {
+        closeLang();
+      } else {
+        langPopover?.classList.remove('hidden');
+        langTrigger?.setAttribute('aria-expanded', 'true');
+      }
+    });
+
+    document.querySelectorAll('[data-lang-option]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const lang = btn.getAttribute('data-lang-option') || 'fr';
+        if (window.applySiteLang) window.applySiteLang(lang);
+        closeLang();
+      });
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!explorerPopover?.contains(e.target) && e.target !== explorerTrigger) {
+        closeExplorer();
+      }
+      if (!langPopover?.contains(e.target) && e.target !== langTrigger) {
+        closeLang();
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeExplorer();
+        closeLang();
+      }
+    });
+
+    document.getElementById('theme-toggle')?.addEventListener('click', () => {
+      const html = document.documentElement;
+      const isDark = html.classList.toggle('dark');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    });
+  })();
+</script> <main class="flex-1 w-full max-w-2xl mx-auto px-5 sm:px-6 py-10 sm:py-14">  <section class="mb-8"> <h1 class="font-pixel text-3xl sm:text-4xl tracking-tight text-[var(--text)] mb-4">
+All articles
+</h1> <!-- Language filter pills (EN / FR like Codelynx GB / FR) --> <div class="flex items-center gap-2 mb-6" role="group" aria-label="Filter posts by language"> <button type="button" data-post-lang="all" class="post-lang-btn px-2.5 py-1 rounded-md text-xs font-mono font-medium bg-[var(--text)] text-[var(--bg)] border border-[var(--text)] transition-colors cursor-pointer">
+ALL
+</button> <button type="button" data-post-lang="en" class="post-lang-btn px-2.5 py-1 rounded-md text-xs font-mono font-medium border border-[var(--border)] text-[var(--text-muted)] hover:text-[var(--text)] transition-colors cursor-pointer">
+EN
+</button> <button type="button" data-post-lang="fr" class="post-lang-btn px-2.5 py-1 rounded-md text-xs font-mono font-medium border border-[var(--border)] text-[var(--text-muted)] hover:text-[var(--text)] transition-colors cursor-pointer">
+FR
+</button> </div> <!-- Search + Sort row --> <div class="flex flex-col sm:flex-row gap-3 mb-4"> <input id="posts-search" type="search" placeholder="Search..." data-i18n-placeholder-fr="Rechercher..." data-i18n-placeholder-en="Search..." aria-label="Search articles" class="flex-1 rounded-lg border border-[var(--border)] bg-[var(--bg-elevated)] px-3.5 py-2 text-sm text-[var(--text)] placeholder:text-[var(--text-muted)] focus:border-[var(--border-strong)] focus:outline-none transition-colors"> <select id="posts-sort" aria-label="Sort articles" class="rounded-lg border border-[var(--border)] bg-[var(--bg-elevated)] px-3.5 py-2 text-sm text-[var(--text)] focus:border-[var(--border-strong)] focus:outline-none cursor-pointer"> <option value="recent" data-i18n-fr="Plus récents" data-i18n-en="Most recent">Most recent</option> <option value="oldest" data-i18n-fr="Plus anciens" data-i18n-en="Oldest first">Oldest first</option> </select> </div> <!-- Category & tag pills --> <div class="flex flex-wrap items-center gap-1.5"> <button type="button" data-cat-btn="all" class="cat-btn px-3 py-1 rounded-full text-xs font-medium bg-[var(--text)] text-[var(--bg)] border border-[var(--text)] transition-colors cursor-pointer">
+All
+</button> <button type="button" data-cat-btn="ai" class="cat-btn px-3 py-1 rounded-full text-xs font-medium border border-[var(--border)] text-[var(--text-muted)] hover:text-[var(--text)] transition-colors cursor-pointer" data-i18n-fr="Intelligence artificielle" data-i18n-en="AI">
+Intelligence artificielle
+</button> <button type="button" data-cat-btn="tools" class="cat-btn px-3 py-1 rounded-full text-xs font-medium border border-[var(--border)] text-[var(--text-muted)] hover:text-[var(--text)] transition-colors cursor-pointer" data-i18n-fr="Outils de développement" data-i18n-en="Dev Tools">
+Outils de développement
+</button> <button type="button" data-tag-btn="ai-agents" class="tag-btn px-3 py-1 rounded-full text-xs font-medium border border-[var(--border)] text-[var(--text-muted)] hover:text-[var(--text)] transition-colors cursor-pointer"> ai-agents </button><button type="button" data-tag-btn="architecture" class="tag-btn px-3 py-1 rounded-full text-xs font-medium border border-[var(--border)] text-[var(--text-muted)] hover:text-[var(--text)] transition-colors cursor-pointer"> architecture </button><button type="button" data-tag-btn="ci-cd" class="tag-btn px-3 py-1 rounded-full text-xs font-medium border border-[var(--border)] text-[var(--text-muted)] hover:text-[var(--text)] transition-colors cursor-pointer"> ci-cd </button><button type="button" data-tag-btn="software-factory" class="tag-btn px-3 py-1 rounded-full text-xs font-medium border border-[var(--border)] text-[var(--text-muted)] hover:text-[var(--text)] transition-colors cursor-pointer"> software-factory </button> </div> </section>  <section class="divide-y divide-[var(--border)]/60" id="all-posts-list"> <article data-post-card data-lang="fr" data-category="ai" data-tags="software-factory,ai-agents,architecture,ci-cd" data-date="1795478400000" data-search="qu'est-ce qu'une software factory ia ? architecture, chiffres réels et pourquoi on ne peut pas l'acheter une usine logicielle d'ia n'est pas un simple assistant de code. c'est une architecture complète où des agents implémentent, testent et livrent pendant que les ingénieurs posent les garde-fous. ai software-factory ai-agents architecture ci-cd" class="group py-5 first:pt-1 transition-colors"> <a href="/posts/quest-ce-quune-software-factory-ia/" class="block focus:outline-none"> <h3 class="font-display text-base sm:text-[17px] font-semibold tracking-tight text-[var(--text)] group-hover:text-[var(--text-muted)] transition-colors"> Qu&#39;est-ce qu&#39;une Software Factory IA ? Architecture, chiffres réels et pourquoi on ne peut pas l&#39;acheter </h3> <p class="mt-1.5 text-sm text-[var(--text-muted)] leading-relaxed line-clamp-2"> Une usine logicielle d&#39;IA n&#39;est pas un simple assistant de code. C&#39;est une architecture complète où des agents implémentent, testent et livrent pendant que les ingénieurs posent les garde-fous. </p> <div class="mt-2.5 flex items-center gap-2 text-xs text-[var(--text-muted)]/80"> <time datetime="2026-11-24T00:00:00.000Z" class="tabular-nums"> 24 nov. 2026 </time> <span aria-hidden="true">&bull;</span> <span>AI</span> </div> </a> </article><article data-post-card data-lang="en" data-category="ai" data-tags="software-factory,ai-agents,architecture,ci-cd" data-date="1795478400000" data-search="what is an ai software factory? architecture, real-world numbers, and why you can't buy one an ai software factory is not a chatbot in your ide. it is an end-to-end architecture where agents write, test, review, and ship code while engineers set the guardrails. ai software-factory ai-agents architecture ci-cd" class="group py-5 first:pt-1 transition-colors"> <a href="/posts/what-is-an-ai-software-factory/" class="block focus:outline-none"> <h3 class="font-display text-base sm:text-[17px] font-semibold tracking-tight text-[var(--text)] group-hover:text-[var(--text-muted)] transition-colors"> What Is an AI Software Factory? Architecture, Real-World Numbers, and Why You Can&#39;t Buy One </h3> <p class="mt-1.5 text-sm text-[var(--text-muted)] leading-relaxed line-clamp-2"> An AI software factory is not a chatbot in your IDE. It is an end-to-end architecture where agents write, test, review, and ship code while engineers set the guardrails. </p> <div class="mt-2.5 flex items-center gap-2 text-xs text-[var(--text-muted)]/80"> <time datetime="2026-11-24T00:00:00.000Z" class="tabular-nums"> Nov 24, 2026 </time> <span aria-hidden="true">&bull;</span> <span>AI</span> </div> </a> </article> </section><p id="posts-empty-filter" class="hidden py-12 text-center text-sm text-[var(--text-muted)]" data-i18n-fr="Aucun article ne correspond à cette recherche." data-i18n-en="No articles match your current filter.">
+Aucun article ne correspond à cette recherche.
+</p>  </main> <footer class="border-t border-[var(--border)]/70 mt-20"> <div class="max-w-2xl mx-auto px-5 sm:px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[var(--text-muted)]"> <div class="flex items-center gap-3"> <span class="font-serif-editorial italic text-lg text-[var(--text)] leading-none">KAK</span> <span aria-hidden="true">&middot;</span> <span class="tabular-nums">&copy; 2026 Konaté Abdoul Karim</span> </div> <div class="flex items-center gap-5"> <a href="/posts/" class="hover:text-[var(--text)] transition-colors">
+Posts
+</a> <a href="/about/" data-i18n-fr="À propos" data-i18n-en="About" class="hover:text-[var(--text)] transition-colors">
+About
+</a> <a href="https://github.com/karimgamin2000-beep" target="_blank" rel="noopener noreferrer" class="hover:text-[var(--text)] transition-colors">
+GitHub
+</a> <a href="https://x.com/Karimpromax1" target="_blank" rel="noopener noreferrer" class="hover:text-[var(--text)] transition-colors">
+X
+</a> </div> </div> </footer> <!-- Global bilingual UI sync --> <script>
+      (function () {
+        window.applySiteLang = function (lang) {
+          localStorage.setItem('kak_lang', lang);
+          document.documentElement.setAttribute('data-lang', lang);
+          document.documentElement.lang = lang;
+
+          document.querySelectorAll('[data-i18n-fr][data-i18n-en]').forEach((el) => {
+            const text = lang === 'en' ? el.getAttribute('data-i18n-en') : el.getAttribute('data-i18n-fr');
+            if (text !== null) el.textContent = text;
+          });
+
+          document.querySelectorAll('[data-i18n-placeholder-fr][data-i18n-placeholder-en]').forEach((el) => {
+            const ph = lang === 'en' ? el.getAttribute('data-i18n-placeholder-en') : el.getAttribute('data-i18n-placeholder-fr');
+            if (ph !== null) el.setAttribute('placeholder', ph);
+          });
+
+          document.querySelectorAll('[data-lang-badge]').forEach((el) => {
+            el.textContent = lang.toUpperCase();
+          });
+
+          document.querySelectorAll('[data-lang-option]').forEach((el) => {
+            const isActive = el.getAttribute('data-lang-option') === lang;
+            el.setAttribute('aria-checked', isActive ? 'true' : 'false');
+            const check = el.querySelector('[data-lang-check]');
+            if (check) check.classList.toggle('opacity-0', !isActive);
+          });
+
+          window.dispatchEvent(new CustomEvent('kak:langchange', { detail: { lang } }));
+        };
+
+        const initial = localStorage.getItem('kak_lang') || 'en';
+        window.applySiteLang(initial);
+      })();
+    </script> </body> </html> <script>
+  (function () {
+    const params = new URLSearchParams(window.location.search);
+    let activeLang = 'all';
+    let activeCategory = params.get('category') || 'all';
+    let activeTag = 'all';
+    let query = '';
+    let sortOrder = 'recent';
+
+    const listEl = document.getElementById('all-posts-list');
+    const searchInput = document.getElementById('posts-search');
+    const sortSelect = document.getElementById('posts-sort');
+    const langBtns = document.querySelectorAll('.post-lang-btn');
+    const catBtns = document.querySelectorAll('.cat-btn');
+    const tagBtns = document.querySelectorAll('.tag-btn');
+    const emptyFilter = document.getElementById('posts-empty-filter');
+
+    function setBtnActive(btn, isCurrent) {
+      btn.classList.toggle('bg-[var(--text)]', isCurrent);
+      btn.classList.toggle('text-[var(--bg)]', isCurrent);
+      btn.classList.toggle('border-[var(--text)]', isCurrent);
+      btn.classList.toggle('border-[var(--border)]', !isCurrent);
+      btn.classList.toggle('text-[var(--text-muted)]', !isCurrent);
+    }
+
+    function applyAll() {
+      if (!listEl) return;
+      const cards = Array.from(listEl.querySelectorAll('[data-post-card]'));
+
+      cards.sort((a, b) => {
+        const da = Number(a.getAttribute('data-date') || 0);
+        const db = Number(b.getAttribute('data-date') || 0);
+        return sortOrder === 'recent' ? db - da : da - db;
+      });
+      cards.forEach((c) => listEl.appendChild(c));
+
+      let visible = 0;
+      cards.forEach((card) => {
+        const cLang = card.getAttribute('data-lang');
+        const cCat = card.getAttribute('data-category');
+        const cTags = (card.getAttribute('data-tags') || '').split(',').filter(Boolean);
+        const blob = card.getAttribute('data-search') || '';
+
+        const matchLang = activeLang === 'all' || cLang === activeLang;
+        const matchCat = activeCategory === 'all' || cCat === activeCategory;
+        const matchTag = activeTag === 'all' || cTags.includes(activeTag);
+        const matchQuery = !query || blob.includes(query);
+
+        const show = matchLang && matchCat && matchTag && matchQuery;
+        card.classList.toggle('hidden', !show);
+        if (show) visible++;
+      });
+
+      emptyFilter?.classList.toggle('hidden', visible > 0);
+    }
+
+    // Sync initial URL category pill highlight
+    catBtns.forEach((b) => {
+      setBtnActive(b, (b.getAttribute('data-cat-btn') || 'all') === activeCategory);
+    });
+    applyAll();
+
+    langBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        activeLang = btn.getAttribute('data-post-lang') || 'all';
+        langBtns.forEach((b) => setBtnActive(b, b === btn));
+        applyAll();
+      });
+    });
+
+    catBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        activeCategory = btn.getAttribute('data-cat-btn') || 'all';
+        activeTag = 'all';
+        catBtns.forEach((b) => setBtnActive(b, b === btn));
+        tagBtns.forEach((b) => setBtnActive(b, false));
+        applyAll();
+      });
+    });
+
+    tagBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const clicked = btn.getAttribute('data-tag-btn') || 'all';
+        activeTag = activeTag === clicked ? 'all' : clicked;
+        tagBtns.forEach((b) => setBtnActive(b, b.getAttribute('data-tag-btn') === activeTag));
+        applyAll();
+      });
+    });
+
+    searchInput?.addEventListener('input', (e) => {
+      query = e.target.value.trim().toLowerCase();
+      applyAll();
+    });
+
+    sortSelect?.addEventListener('change', (e) => {
+      sortOrder = e.target.value;
+      applyAll();
+    });
+  })();
+</script>

@@ -5,7 +5,12 @@ import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
   site: 'https://karimgamin2000-beep.github.io',
-  integrations: [mdx(), sitemap()],
+  integrations: [
+    mdx(),
+    sitemap({
+      filter: (page) => !page.includes('/admin'),
+    }),
+  ],
   vite: {
     plugins: [tailwindcss()],
   },

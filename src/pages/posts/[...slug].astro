@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import GiscusComments from '../../components/GiscusComments.astro';
 import { estimateReadingTime, formatDate } from '../../lib/posts';
 
 export async function getStaticPaths() {
@@ -22,10 +23,10 @@ const { post, prevPost, nextPost } = Astro.props;
 const { Content, headings } = await render(post);
 const readingTime = estimateReadingTime(post.body);
 const tocHeadings = headings.filter((h) => h.depth === 2 || h.depth === 3);
-const { title, description, pubDate, updatedDate, lang, tags } = post.data;
+const { title, description, pubDate, updatedDate, lang, tags, translationSlug } = post.data;
 ---
 
-<BaseLayout title={`${title} — KAK`} description={description} ogType="article">
+<BaseLayout title={`${title} — KAK`} description={description} ogType="article" ogImage={`/og/${post.id}.png`}>
   <!-- Reading progress bar -->
   <div
     id="reading-progress"
@@ -82,6 +83,23 @@ const { title, description, pubDate, updatedDate, lang, tags } = post.data;
                 #{tag}
               </span>
             ))}
+          </div>
+        )
+      }
+
+      {
+        translationSlug && (
+          <div class="mt-5">
+            <a
+              href={`/posts/${translationSlug}/`}
+              class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border border-[var(--border)] bg-[var(--bg-elevated)] text-xs font-mono text-[var(--text)] hover:border-[var(--border-strong)] transition-colors"
+            >
+              <svg class="w-3.5 h-3.5 text-[var(--text-muted)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9 9 0 100-18 9 9 0 000 18z" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3.6 9h16.8M3.6 15h16.8M12 3a14.5 14.5 0 010 18M12 3a14.5 14.5 0 000 18" />
+              </svg>
+              <span>{lang === 'en' ? 'Lire en français →' : 'Read in English →'}</span>
+            </a>
           </div>
         )
       }
@@ -145,6 +163,8 @@ const { title, description, pubDate, updatedDate, lang, tags } = post.data;
       </nav>
     )
   }
+
+  <GiscusComments lang={lang} />
 </BaseLayout>
 
 <script is:inline>
